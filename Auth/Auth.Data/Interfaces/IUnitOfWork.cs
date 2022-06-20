@@ -9,7 +9,6 @@ namespace Auth.Data.Interfaces
     public interface IUnitOfWork
     {
         Task CommmitAsync();
-
         void Commit();
     }
 }

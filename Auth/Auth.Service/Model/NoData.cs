@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auth.Service.Dtos
+namespace Auth.Service.Model
 {
-    public class NoDataDto
+    public class NoData
     {
     }
 }

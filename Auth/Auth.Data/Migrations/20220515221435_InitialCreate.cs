@@ -1,9 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
-namespace Auth.Data.Migrations
+namespace JWT.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -49,16 +47,18 @@ namespace Auth.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RefreshTokens",
+                name: "UserRefreshToken",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserRefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Expiration = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RefreshTokens", x => x.UserId);
+                    table.PrimaryKey("PK_UserRefreshToken", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -225,7 +225,7 @@ namespace Auth.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "RefreshTokens");
+                name: "UserRefreshToken");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
